@@ -11,3 +11,7 @@
 | DeepLog | `src/ifor_mb/baselines/deeplog.py` |
 | LogRobust | `src/ifor_mb/baselines/logrobust.py` |
 | Original dataset | `src/ifor_mb/synthetic/demonstration.py` |
+
+| Fused detector | `src/ifor_mb/models.py` |
+| Full synthetic pipeline | `src/ifor_mb/synthetic/pipeline.py` |
+| Reusable contextual ranker | `src/ifor_mb/backtracking/contextual.py` |
