@@ -1,5 +1,7 @@
 # iForMB
 
+[![CI](https://github.com/Enock02333/iForMB/actions/workflows/ci.yml/badge.svg)](https://github.com/Enock02333/iForMB/actions/workflows/ci.yml)
+
 **An integrated Isolation Forest–MLP framework with contextual backtracking for distributed-system log anomaly detection.**
 
 ![iForMB architecture](docs/assets/ifor-mb-architecture.jpg)
@@ -45,7 +47,7 @@ $$
 and
 
 $$
-z_{IF}(x)=\frac{s_{IF}(x)-\operatorname{median}(S_0)}{1.4826\,\operatorname{MAD}(S_0)+\epsilon}.
+z_{IF}(x)=\frac{s_{IF}(x)-\mathrm{median}(S_0)}{1.4826\,\mathrm{MAD}(S_0)+\epsilon}.
 $$
 
 The calibrated evidence vector is
@@ -67,7 +69,7 @@ $$
 The MLP computes
 
 $$
-a^{(\ell)}=\operatorname{ReLU}(W^{(\ell)}a^{(\ell-1)}+b^{(\ell)}),
+a^{(\ell)}=\mathrm{ReLU}(W^{(\ell)}a^{(\ell-1)}+b^{(\ell)}),
 $$
 
 with hidden widths 128 and 64, followed by
@@ -231,6 +233,32 @@ Stages executed:
 8. train the fused MLP;
 9. choose the validation threshold under the FPR constraint;
 10. write `synthetic-development-summary.json`.
+
+
+The output directory contains:
+
+```text
+results/runs/synthetic/
+└── synthetic-development-summary.json
+```
+
+The summary records the dataset role, seed, split counts, validation-selected threshold, calibrated-evidence dimensions, and predicted-anomaly count. It also carries an explicit warning that the synthetic targets are IF-derived development targets rather than independent ground truth.
+
+Illustrative schema only (values depend on the downloaded dataset and seed):
+
+```json
+{
+  "dataset_role": "framework development and workflow demonstration",
+  "independent_ground_truth": false,
+  "seed": 13,
+  "split_counts": {
+    "train": "60% of records",
+    "validation": "20% of records",
+    "test": "20% of records"
+  },
+  "evidence_shape": ["test records", 3]
+}
+```
 
 ## 9. Run HDFS, BGL, and backtracking experiments
 

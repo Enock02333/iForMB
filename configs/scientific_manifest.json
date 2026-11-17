@@ -1,0 +1,42 @@
+{
+  "name": "iForMB",
+  "version": "1.0.0",
+  "architecture": {
+    "isolation_evidence": [
+      "raw_score",
+      "normal_percentile",
+      "robust_z"
+    ],
+    "fusion": "early feature-level concatenation",
+    "mlp_hidden_layers": [
+      128,
+      64
+    ],
+    "threshold": {
+      "source": "validation",
+      "objective": "max_f1",
+      "max_fpr": 0.001
+    },
+    "backtracking": "post-detection contextual ranking"
+  },
+  "datasets": {
+    "synthetic": {
+      "role": "framework development",
+      "independent_ground_truth": false
+    },
+    "hdfs": {
+      "role": "labelled conventional and unseen-type evaluation"
+    },
+    "bgl": {
+      "role": "chronological labelled evaluation and contextual retrieval"
+    }
+  },
+  "seeds": [
+    13,
+    29,
+    47,
+    71,
+    101
+  ],
+  "reference_results_directory": "results/reference"
+}
