@@ -1,0 +1,4 @@
+experiment: hdfs_conventional
+seeds: [13, 29, 47, 71, 101]
+split: {train: 0.60, validation: 0.20, test: 0.20, stratified: true}
+threshold: {metric: f1_anomaly, max_fpr: 0.001, source: validation}

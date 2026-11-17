@@ -1,0 +1,4 @@
+experiment: bgl_chronological
+seeds: [13, 29, 47, 71, 101]
+window: {size: 20, stride: 20}
+split: {train: 0.60, validation: 0.20, test: 0.20, chronological: true}
