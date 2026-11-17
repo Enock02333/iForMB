@@ -1,0 +1,7 @@
+timestamp,service,request_id,user,message,severity,client,duration
+2026-01-01T00:00:00Z,api,r1,u1,request accepted,INFO,web,10
+2026-01-01T00:01:00Z,api,r2,u2,request timeout,ERROR,web,500
+2026-01-01T00:02:00Z,db,r3,u1,query complete,INFO,batch,30
+2026-01-01T00:03:00Z,db,r4,u3,connection failed,FATAL,batch,900
+2026-01-01T00:04:00Z,cache,r5,u2,cache hit,INFO,web,5
+2026-01-01T00:05:00Z,api,r6,u1,request warning,WARNING,web,80

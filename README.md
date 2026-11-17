@@ -302,3 +302,39 @@ These summaries are descriptive outputs of the committed experiment contracts, n
 - [Outputs](docs/OUTPUTS.md)
 - [Manuscript-to-code mapping](docs/MANUSCRIPT_MAPPING.md)
 - [Dataset acquisition and citations](data/README.md)
+
+## 13. Unified experiment and table interfaces
+
+Inspect the registered workflows:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\run_experiment.py --help
+```
+
+Regenerate committed summary inputs and validate reference contracts:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\build_tables.py `
+  --reference results\reference `
+  --output results\generated
+
+.\.venv\Scripts\python.exe scripts\verify_reference_results.py
+```
+
+Matched external baselines require optional dependencies:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -e ".[baselines]"
+.\.venv\Scripts\python.exe scripts\run_experiment.py external-baselines --smoke
+```
+
+See [Matched baselines](docs/BASELINES.md) and [Runtime expectations](docs/RUNTIMES.md).
+
+## 14. Reproducible environment
+
+A tested Python 3.10 package snapshot is provided in `requirements/paper-py310.txt`. A CPU-oriented `Dockerfile` runs the public test suite without benchmark data:
+
+```bash
+docker build -t ifor-mb:paper .
+docker run --rm ifor-mb:paper
+```

@@ -1,0 +1,6 @@
+
+experiment: external_baselines
+seeds: [13, 29, 47, 71, 101]
+threshold: {source: validation, metric: f1_anomaly, max_fpr: 0.001}
+deeplog: {history: 10, embedding_dim: 32, hidden_size: 64, training: normal_only_next_event}
+logrobust: {semantic_dim: 300, hidden_per_direction: 64, attention: true, semantic_adapter: training_only_fasttext}
